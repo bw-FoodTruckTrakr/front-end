@@ -3,11 +3,51 @@ import { Link, Route } from "react-router-dom";
 import img from "../marja-images/foodtrucktrackrlogo.png";
 import * as yup from "yup";
 import schema from "../validation/signUpSchema";
+import SignUpForm from "./SignUpForm";
+import styled from "styled-components";
 
+////////styles////////////
+const StyledFormContainer = styled.div`
+  text-align: center;
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .sign-in-btn {
+    padding: 1%;
+    border: 1px solid ${(props) => props.theme.button};
+    border-radius: 5px 0 0 5px;
+    background-color: ${(props) => props.theme.paleYellow};
+    color: ${(props) => props.theme.button};
+    margin-bottom: 3%;
+
+    &:hover {
+      background-color: ${(props) => props.theme.button};
+      color: white;
+    }
+  }
+
+  .register-btn {
+    padding: 1%;
+    border: 1px solid ${(props) => props.theme.button};
+    border-radius: 0 5px 5px 0;
+    color: white;
+    background-color: ${(props) => props.theme.button};
+  }
+
+  .member {
+    color: ${(props) => props.theme.grey};
+  }
+`;
+
+////////Initial Values////////////
 const initialFormValues = {
   username: "",
   password: "",
   email: "",
+  status: "",
   tos: false,
 };
 
@@ -15,16 +55,20 @@ const initialFormErrors = {
   username: "",
   password: "",
   email: "",
+  status: "",
   tos: "",
 };
 
 const initialDisabled = true;
 
+/////////Start function///////////
 export default function SignUp() {
+  //////////set state/////////////
   const [formValues, setFormValues] = useState(initialFormValues);
   const [disabled, setDisabled] = useState(initialDisabled);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
 
+  ///////////event handlers////////////
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const valueToUse = type === "checkbox" ? checked : value;
@@ -52,6 +96,7 @@ export default function SignUp() {
       username: formValues.username.trim(),
       password: formValues.password,
       email: formValues.email.trim(),
+      status: formValues.status,
       tos: formValues.tos,
     };
   };
@@ -62,67 +107,27 @@ export default function SignUp() {
     });
   }, [formValues]);
 
+  /////////////rendered//////////////
   return (
-    <div>
+    <StyledFormContainer>
       <img src={img} />
-      <Link to="#">Sign Up</Link>
-      <Link to="#">Sign In</Link>
-      <form onSubmit={handleSubmit}>
-        <div className="errors">
-          <div>{formErrors.username}</div>
-          <div>{formErrors.password}</div>
-          <div>{formErrors.email}</div>
-          <div>{formErrors.tos}</div>
-        </div>
-
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={formValues.username}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={formValues.password}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formValues.email}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          I agree to the{" "}
-          <span className="bold underline">terms of service</span>
-          terms of service:
-          <input
-            type="checkbox"
-            name="tos"
-            checked={formValues.tos}
-            onChange={handleChange}
-          />
-        </label>
-
-        <button className="submit" disabled={disabled}>
-          Sign Up!
-        </button>
-      </form>
-      <Link to="#">I'm already a member</Link>
+      <Link to="#">
+        <button class="sign-in-btn">Sign In</button>
+      </Link>
+      <Link to="#">
+        <button class="register-btn">Register</button>
+      </Link>
+      <SignUpForm
+        values={formValues}
+        change={handleChange}
+        submit={handleSubmit}
+        errors={formErrors}
+        disabled={disabled}
+      />
+      <Link to="#">
+        <p className="member">I'm already a member</p>
+      </Link>
       <Route path="/signin">{/* sign in page*/}</Route>
-    </div>
+    </StyledFormContainer>
   );
 }

@@ -13,5 +13,8 @@ export default yup.object().shape({
     .string()
     .email("Must be a valid email address")
     .required("Email is required"),
+  status: yup
+    .string()
+    .oneOf(["diner", "operator"], "You must select diner or operator"),
   tos: yup.boolean().oneOf([true], "You must agree to our terms of service"),
 });
