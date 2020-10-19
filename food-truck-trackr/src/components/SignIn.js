@@ -42,6 +42,8 @@ label, .signin {
     margin: 10% 0%; 
 }
 
+
+
 .signin {
     display: flex; 
     justify-content: center; 
@@ -78,6 +80,7 @@ p {
     cursor: pointer;
     font-family: 'Titillium Web', sans-serif;
     background: white;
+    font-size: 1.6rem;
 }
 
 .active {
@@ -86,7 +89,8 @@ p {
 }
 
 a {
-    color: #4c4c4c 
+    color: #4c4c4c; 
+    border-bottom: 1px solid #4c4c4c; 
 }
 
 
@@ -97,7 +101,6 @@ a {
 
 h2 {
     margin-bottom: 3%; 
-    margin-left: 3%; 
 }
 
 
@@ -106,6 +109,7 @@ input {
     border: #fde2c2;
     border-bottom: 2px solid gray; 
     outline: none; 
+    width: 100%
 }
 
 #register:hover {
@@ -119,13 +123,18 @@ input {
 
 .bottom-btn {
 
-    padding: 5%; 
+    padding: 2.4%; 
     width: 100%; 
     margin-bottom: 10%; 
     cursor: pointer;
     font-family: 'Titillium Web', sans-serif;
+    font-size: 2.1rem; 
 
 
+}
+
+label {
+    width: 90%
 }
 `
 
@@ -144,13 +153,13 @@ const SignIn = ({onInputChange, values, onFormSubmit, errors, buttonDisabled}) =
             <form className="form" onSubmit={onFormSubmit}>
                 <label>
                     <h2>USERNAME</h2>
-                    <input type="text" name="username" onChange={onInputChange} value={values.username} /> 
+                    <input type="text" name="username" onChange={onInputChange} value={values.username} placeholder="Enter username here" /> 
                     {errors.username.length !== 0 && <p>{errors.username}</p>}
                 </label>
                 
                 <label>
                     <h2>PASSWORD</h2>
-                    <input type="password" name="password" onChange={onInputChange} value={values.password} />
+                    <input type="password" name="password" onChange={onInputChange} value={values.password} placeholder="***************" />
                     {errors.password.length !== 0 && <p>{errors.password}</p>} 
                 
                 </label>
