@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
-    <div className="App">
-      <header>
-        <h1>Working!</h1>
-      </header>
+    <div>
+      <SignUp />
     </div>
   );
 }
