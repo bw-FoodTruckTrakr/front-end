@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap');
-
-
-/* /* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/ 
 v2.0 | 20110126
 License: none (public domain)
 */
@@ -57,17 +55,13 @@ a {
 }
 * {
     box-sizing: border-box;
-    border: 2px solid gray; 
 }
 html {
     font-size: 62.5%;
 }
 body {
     font-size: 1.6rem;
-    font-family: 'Titillium Web', sans-serif;
-
-} */
-
+}
 .App {
     display: flex;
     justify-content: center;
