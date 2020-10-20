@@ -16,7 +16,7 @@ const StyledTruckForm = styled.form`
     margin-bottom: 1%;
   }
 
-  input[type="text"] {
+  input {
     display: block;
     margin: 4%;
     border: none;
@@ -74,10 +74,14 @@ export default function AddTruckForm() {
     setFormValues({ ...formValues, truckImage: "" });
   };
 
+  const getAverage = (customerRatings) => {
+    const arr2 = customerRatings.map((num) => Number(num));
+    arr2.reduce((acc, c) => ((acc + c) / arr2.length).toFixed(2));
+  };
+
   return (
     <StyledTruckForm onSubmit={handleSubmit}>
       <h2>Add A Truck!</h2>
-
       <label>
         Add Truck Image
         <input
@@ -91,9 +95,7 @@ export default function AddTruckForm() {
       <button type="button" onClick={handleImageClick}>
         Add Truck Image
       </button>
-
       {imageUrl ? <img src={imageUrl} /> : null}
-
       <label>
         Cuisine Type
         <input
@@ -104,14 +106,13 @@ export default function AddTruckForm() {
           onChange={handleChange}
         />
       </label>
-
       <label>
         Add Ratings
         <input
-          type="text"
+          type="number"
           name="ratings"
           value={formValues.ratings}
-          placeholder="Add ratings"
+          placeholder="Add numerical ratings"
           onChange={handleChange}
         />
       </label>
@@ -119,8 +120,8 @@ export default function AddTruckForm() {
         Add Rating
       </button>
 
-      {customerRatings.map((rating) => {
-        return <li>{rating}</li>;
+      {customerRatings.map((rating, idx) => {
+        return <li key={idx}>{rating}</li>;
       })}
 
       <button type="submit">Submit</button>
