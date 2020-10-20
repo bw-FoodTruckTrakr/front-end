@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Route } from "react-router-dom";
-import img from "../marja-images/foodtrucktrackrlogo.png";
+import img from "../Logo/logo.png";
 import * as yup from "yup";
 import schema from "../marja-validation/signUpSchema";
 import SignUpForm from "./SignUpForm";
