@@ -4,6 +4,7 @@ import "./App.css";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import * as yup from "yup";
+import Dashboard from "./Dashboard";
 
 const App = () => {
   const initalValues = {
@@ -62,7 +63,8 @@ const App = () => {
       .required("Please provide a username")
       .min(3, "Username should be longer than 2 characters")
       .strict(true)
-      .trim("cannot include leading and trailing spaces"),
+      .trim("cannot include leading and trailing spaces")
+      .matches(/^\S*$/, "cannot include leading and trailing spaces"),
 
     password: yup
       .string()
@@ -89,8 +91,13 @@ const App = () => {
             buttonDisabled={buttonDisabled}
           />
         </Route>
+
         <Route path="/signup">
           <SignUp />
+        </Route>
+
+        <Route path="/dashboard" exact>
+          <Dashboard />
         </Route>
       </Switch>
     </div>
