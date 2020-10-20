@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import img from "../Logo/logo.png";
 import * as yup from "yup";
 import schema from "../marja-validation/signUpSchema";
