@@ -111,12 +111,10 @@ export default function SignUp() {
   return (
     <StyledFormContainer>
       <img src={img} />
-      <Link to="#">
+      <Link to="/">
         <button class="sign-in-btn">Sign In</button>
       </Link>
-      <Link to="#">
-        <button class="register-btn">Register</button>
-      </Link>
+      <button class="register-btn">Register</button>
       <SignUpForm
         values={formValues}
         change={handleChange}
@@ -124,10 +122,9 @@ export default function SignUp() {
         errors={formErrors}
         disabled={disabled}
       />
-      <Link to="#">
+      <Link to="/">
         <p className="member">I'm already a member</p>
       </Link>
-      <Route path="/signin">{/* sign in page*/}</Route>
     </StyledFormContainer>
   );
 }

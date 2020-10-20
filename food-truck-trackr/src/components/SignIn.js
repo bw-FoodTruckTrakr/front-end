@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Logo from "../Logo/logo.png";
+import { Link } from "react-router-dom";
 
 const StyledSignIn = styled.div`
   & {
@@ -68,7 +69,7 @@ const StyledSignIn = styled.div`
   }
 
   .top-btns {
-    padding: 5%;
+    padding: 5% 0;
     width: 100%;
     color: #f99d2d;
     border: none;
@@ -78,12 +79,17 @@ const StyledSignIn = styled.div`
     font-size: 1.6rem;
   }
 
+  .btn-link {
+    margin-left: 15%;
+    margin-right: 8%;
+  }
+
   .active {
     color: white;
     background: #f99d2d;
   }
 
-  a {
+  .bottom-anchor {
     color: #4c4c4c;
     border-bottom: 1px solid #4c4c4c;
   }
@@ -143,9 +149,11 @@ const SignIn = ({
         >
           Sign In
         </button>
-        <button className="top-btns" id="register">
-          Register
-        </button>
+        <Link to="signup" className="btn-link">
+          <button className="top-btns" id="register">
+            Register
+          </button>
+        </Link>
       </div>
       <form className="form" onSubmit={onFormSubmit}>
         <label>
@@ -180,7 +188,9 @@ const SignIn = ({
           >
             Sign In!
           </button>
-          <a href="#">Not a member yet?</a>
+          <a className="bottom-anchor" href="#">
+            Not a member yet?
+          </a>
         </div>
       </form>
     </StyledSignIn>
