@@ -68,15 +68,22 @@ const StyledSignIn = styled.div`
     background: #fffcf9;
   }
 
-  .top-btns {
-    padding: 5% 0;
-    width: 100%;
-    color: #f99d2d;
-    border: none;
-    cursor: pointer;
+
+  .top-btn button {
+    background: red; 
+    font-size: 2.419rem; 
     font-family: "Titillium Web", sans-serif;
     background: white;
-    font-size: 1.6rem;
+    border: 1px solid #F99D2D;
+    cursor: pointer;
+    outline: none; 
+
+  }
+
+  .top-btn button:hover {
+    background: #F99D2D; 
+    color: white; 
+
   }
 
   .btn-link {
@@ -86,7 +93,7 @@ const StyledSignIn = styled.div`
 
   .active {
     color: white;
-    background: #f99d2d;
+    background: #F99D2D; 
   }
 
   .bottom-anchor {
@@ -108,6 +115,8 @@ const StyledSignIn = styled.div`
     width: 100%;
   }
 
+
+
   #register:hover {
     background: #f99d2d;
     color: white;
@@ -121,7 +130,12 @@ const StyledSignIn = styled.div`
     margin-bottom: 10%;
     cursor: pointer;
     font-family: "Titillium Web", sans-serif;
-    font-size: 2.1rem;
+    font-size: 2.2rem;
+    outline: none; 
+  }
+
+  #test {
+    width: 100%;  
   }
 
   label {
@@ -139,21 +153,19 @@ const SignIn = ({
   return (
     <StyledSignIn>
       <div className="logo">
-        <img src={Logo} />
+        <img src={Logo} alt="truck logo" />
       </div>
       <div className="links">
-        <button
-          className={`top-btns ${buttonDisabled ? "" : "active"}`}
-          type="submit"
-          disabled={buttonDisabled}
-        >
-          Sign In
-        </button>
-        <Link to="signup" className="btn-link">
-          <button className="top-btns" id="register">
-            Register
-          </button>
+        <Link to="/" className="top-btn">
+          <button className="top-btn"
+          type="submit" id="signin"
+          >Sign In</button>
         </Link>
+
+        <Link to="signup" className="top-btn">
+          <button id="register">Register</button>
+        </Link>
+      
       </div>
       <form className="form" onSubmit={onFormSubmit}>
         <label>
@@ -181,16 +193,20 @@ const SignIn = ({
         </label>
 
         <div className="signin">
-          <button
+          <Link to="dashboard" id="test">
+            <button
             className={`bottom-btn ${buttonDisabled ? "" : "active"}`}
             type="submit"
             disabled={buttonDisabled}
-          >
+            >
             Sign In!
-          </button>
-          <a className="bottom-anchor" href="#">
+            </button>
+          </Link>
+         <Link to="signup">
+            <h4 className="bottom-anchor">
             Not a member yet?
-          </a>
+            </h4>
+         </Link>
         </div>
       </form>
     </StyledSignIn>
@@ -198,3 +214,4 @@ const SignIn = ({
 };
 
 export default SignIn;
+
