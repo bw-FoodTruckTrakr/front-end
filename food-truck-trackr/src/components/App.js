@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import AddTruckForm from "./AddTruckForm";
+import AddTruck from "./AddTruck";
 import * as yup from "yup";
 
 const App = () => {
@@ -94,7 +94,7 @@ const App = () => {
           <SignUp />
         </Route>
         <Route path="/addtruckform">
-          <AddTruckForm />
+          <AddTruck />
         </Route>
       </Switch>
     </div>
