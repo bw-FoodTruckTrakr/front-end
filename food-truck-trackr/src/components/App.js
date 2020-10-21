@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import AddTruck from "./AddTruck";
 import * as yup from "yup";
 import Dashboard from "./Dashboard";
 import axios from 'axios'; 
