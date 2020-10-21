@@ -1,4 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const StyledButtons = styled.div`
+  display: flex;
+  justify-content: center;
+
+  button {
+    background-color: ${(props) => props.theme.button};
+    color: white;
+    border: none;
+    margin: 1%;
+    padding: 15%;
+    cursor: pointer;
+  }
+
+  a {
+    padding: 2%;
+  }
+`;
 
 //import axios here
 // import axios from "axios";
@@ -19,7 +39,7 @@ export default function TrucksOwned() {
   // }, [])
 
   return (
-    <div>
+    <StyledButtons className="buttons">
       {/* Would map over trucks array and feed this info as props into a styled card component that would render each truck's information*/}
 
       {/* trucks.map(truck => {
@@ -32,6 +52,16 @@ export default function TrucksOwned() {
           <p>Average rating: {truck.average}</p>
           )
       }) */}
-    </div>
+
+      <Link to="/addtruckform">
+        <button className="button">Add Truck</button>
+      </Link>
+      <Link to="/addtruckform">
+        <button className="button">Edit Truck</button>
+      </Link>
+      <a href="#">
+        <button>Delete Truck</button>
+      </a>
+    </StyledButtons>
   );
 }

@@ -4,6 +4,7 @@ import "./App.css";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import AddTruck from "./AddTruck";
+import TrucksOwned from "./TrucksOwned";
 import * as yup from "yup";
 
 const App = () => {
@@ -95,6 +96,9 @@ const App = () => {
         </Route>
         <Route path="/addtruckform">
           <AddTruck />
+        </Route>
+        <Route path="/operator-dashboard">
+          <TrucksOwned />
         </Route>
       </Switch>
     </div>
