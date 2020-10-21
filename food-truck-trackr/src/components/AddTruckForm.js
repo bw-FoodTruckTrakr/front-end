@@ -60,6 +60,14 @@ export default function AddTruckForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const newTruck = {
+      truckImage: formValues.truckImage.trim(),
+      cuisine: formValues.cuisine.trim(),
+      ratings: formValues.ratings,
+      average: average,
+    };
+
     setFormValues(initialFormValues);
     setCustomerRatings([]);
     setImageUrl("");
