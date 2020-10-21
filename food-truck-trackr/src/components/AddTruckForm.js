@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 //////styles////////
@@ -50,6 +50,7 @@ export default function AddTruckForm() {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [customerRatings, setCustomerRatings] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
+  const [average, setAverage] = useState(0);
 
   //////////event handlers/////////
   const handleChange = (e) => {
@@ -62,6 +63,7 @@ export default function AddTruckForm() {
     setFormValues(initialFormValues);
     setCustomerRatings([]);
     setImageUrl("");
+    setAverage(0);
   };
 
   const handleRatingsClick = () => {
@@ -74,10 +76,18 @@ export default function AddTruckForm() {
     setFormValues({ ...formValues, truckImage: "" });
   };
 
-  const getAverage = (customerRatings) => {
-    const arr2 = customerRatings.map((num) => Number(num));
-    arr2.reduce((acc, c) => ((acc + c) / arr2.length).toFixed(2));
-  };
+  useEffect(() => {
+    if (customerRatings.length !== 0) {
+      const arr2 = customerRatings.map((num) => Number(num));
+      let ave = 0;
+
+      for (let i = 0; i < arr2.length; i++) {
+        ave += arr2[i];
+      }
+
+      setAverage((ave / arr2.length).toFixed(2));
+    }
+  }, [customerRatings]);
 
   return (
     <StyledTruckForm onSubmit={handleSubmit}>
@@ -123,6 +133,8 @@ export default function AddTruckForm() {
       {customerRatings.map((rating, idx) => {
         return <li key={idx}>{rating}</li>;
       })}
+
+      <p>Average Rating: {average}</p>
 
       <button type="submit">Submit</button>
     </StyledTruckForm>
