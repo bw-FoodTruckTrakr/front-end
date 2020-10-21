@@ -4,6 +4,7 @@ import "./App.css";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import AddTruck from "./AddTruck";
+import TrucksOwned from "./TrucksOwned";
 import * as yup from "yup";
 import Dashboard from "./Dashboard";
 import axios from 'axios'; 
@@ -119,6 +120,9 @@ const App = () => {
 
         <Route path="/dashboard" exact>
           <Dashboard trucksList={trucksList} />
+        </Route>
+        <Route path="/operator-dashboard">
+          <TrucksOwned />
         </Route>
       </Switch>
     </div>

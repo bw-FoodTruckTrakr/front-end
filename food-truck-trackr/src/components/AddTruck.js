@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddTruckForm from "./AddTruckForm";
+import * as yup from "yup";
+import schema from "../marja-validation/addTruckSchema";
 
 /////////////initial values//////////////
 const initialFormValues = {
@@ -26,6 +28,20 @@ export default function AddTruck() {
   ////////////event handlers////////////
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({
+          ...formErrors,
+          [name]: "",
+        });
+      })
+      .catch((err) => {
+        setFormErrors({ ...formErrors, [name]: err.errors[0] });
+      });
+
     setFormValues({ ...formValues, [name]: value });
   };
 
