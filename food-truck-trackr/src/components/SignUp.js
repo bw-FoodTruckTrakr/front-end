@@ -39,6 +39,8 @@ const StyledFormContainer = styled.div`
 
   .member {
     color: ${(props) => props.theme.grey};
+    text-decoration: underline;
+    margin: 3% 0;
   }
 `;
 
@@ -46,6 +48,7 @@ const StyledFormContainer = styled.div`
 const initialFormValues = {
   username: "",
   password: "",
+  address: "",
   email: "",
   status: "",
   tos: false,
@@ -54,6 +57,7 @@ const initialFormValues = {
 const initialFormErrors = {
   username: "",
   password: "",
+  address: "",
   email: "",
   status: "",
   tos: "",
@@ -95,6 +99,7 @@ export default function SignUp() {
     const newUser = {
       username: formValues.username.trim(),
       password: formValues.password,
+      address: formValues.address.trim(),
       email: formValues.email.trim(),
       status: formValues.status,
       tos: formValues.tos,

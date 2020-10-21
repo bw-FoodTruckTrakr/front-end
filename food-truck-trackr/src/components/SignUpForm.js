@@ -84,6 +84,18 @@ export default function SignUpForm(props) {
       <div className="errors">{errors.password}</div>
 
       <label className="caps">
+        Address
+        <input
+          type="text"
+          name="address"
+          value={values.address}
+          onChange={change}
+          placeholder="Enter address here"
+        />
+      </label>
+      <div className="errors">{errors.address}</div>
+
+      <label className="caps">
         Email
         <input
           type="email"
