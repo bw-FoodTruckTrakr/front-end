@@ -5,6 +5,7 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import * as yup from "yup";
 import Dashboard from "./Dashboard";
+import axios from 'axios'; 
 
 const App = () => {
   const initalValues = {
@@ -19,6 +20,7 @@ const App = () => {
     password: "",
   });
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [trucksList, settrucksList] = useState([]); 
 
   const validateChange = (e) => {
     e.persist();
@@ -75,9 +77,27 @@ const App = () => {
       .matches(/^\S*$/, "cannot include leading and trailing spaces"),
   });
 
+  // check to see if the schema is valid or not
+
   useEffect(() => {
     formSchema.isValid(values).then((valid) => setButtonDisabled(!valid));
   }, [values, formSchema]);
+
+  //axios call for the trucks
+
+  useEffect(() => {
+
+    axios.get('https://foodtrucktrackr7.herokuapp.com/trucks/')
+    .then(res => {
+      settrucksList(res.data); 
+    })
+    .catch(err => {
+      console.log(err); 
+    })
+
+
+  }, [])
+
 
   return (
     <div className="App">
@@ -97,7 +117,7 @@ const App = () => {
         </Route>
 
         <Route path="/dashboard" exact>
-          <Dashboard />
+          <Dashboard trucksList={trucksList} />
         </Route>
       </Switch>
     </div>

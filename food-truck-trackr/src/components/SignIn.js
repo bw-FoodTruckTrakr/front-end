@@ -153,7 +153,7 @@ const SignIn = ({
   return (
     <StyledSignIn>
       <div className="logo">
-        <img src={Logo} />
+        <img src={Logo} alt="truck logo" />
       </div>
       <div className="links">
         <Link to="/" className="top-btn">
@@ -203,9 +203,9 @@ const SignIn = ({
             </button>
           </Link>
          <Link to="signup">
-            <a className="bottom-anchor">
+            <h4 className="bottom-anchor">
             Not a member yet?
-            </a>
+            </h4>
          </Link>
         </div>
       </form>
