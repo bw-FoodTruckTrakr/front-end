@@ -1,5 +1,6 @@
 import React from 'react'; 
 import styled from 'styled-components'; 
+import Logo from "../Logo/logo.png";
 
 const StyledDashboard = styled.div`
 
@@ -8,14 +9,31 @@ const StyledDashboard = styled.div`
     justify-content: center; 
     align-items: center; 
     flex-direction: column;
-    width: 100% 
+    width: 100%; 
+    background: #f9ae2d
+
 }
+.title {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    height: 25vh; 
+    width: 100%
+}
+
+.logo {
+  width: 15%; 
+  border: none; 
+  background: #f9ae2d; 
+}
+
 
 
 h1 {
     margin: 5%;
     font-size: 8rem;
     color: #002A29; 
+    margin-right: 23%
 }
 
 .truck-container {
@@ -24,6 +42,7 @@ h1 {
     align-items: center; 
     flex-wrap: wrap; 
     width: 100%;
+    background: white; 
 }
 
 .truck {
@@ -54,9 +73,7 @@ p {
     margin: 2%; 
 }
 
-span {
-    color: #F99D2D; 
-}
+
 
 
 `
@@ -68,10 +85,10 @@ const Dashboard = ({trucksList}) => {
         return (
             <div className="truck" key={cur.id}>
                 <h2>{cur.name}</h2>
-                <img className="truck-image" src={cur.imgUrl} /> 
+                <img className="truck-image" alt={cur.name} src={cur.imgUrl} /> 
                 <p> Type: {cur.cuisineType}</p> 
                 <p> Rating: {cur.customerRatingAvg}</p>
-                <p> <span>Location: </span> {cur.currentLocation}</p>
+                <p>Location: {cur.currentLocation}</p>
                 <hr></hr>
             </div>
         )
@@ -80,7 +97,11 @@ const Dashboard = ({trucksList}) => {
 
     return (
         <StyledDashboard>
-            <h1>Dashboard</h1>
+            <div className="title">
+                <img className="logo" src={Logo} alt="truck logo" /> 
+                <h1>Dashboard</h1>
+                <div></div>
+            </div>
             <div className="truck-container">
                 {renderedTruckList}
             </div>
