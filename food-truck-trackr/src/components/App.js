@@ -7,7 +7,7 @@ import AddTruck from "./AddTruck";
 import TrucksOwned from "./TrucksOwned";
 import * as yup from "yup";
 import Dashboard from "./Dashboard";
-import axios from 'axios'; 
+import axios from "axios";
 
 const App = () => {
   const initalValues = {
@@ -22,7 +22,7 @@ const App = () => {
     password: "",
   });
   const [buttonDisabled, setButtonDisabled] = useState(true);
-  const [trucksList, settrucksList] = useState([]); 
+  const [trucksList, settrucksList] = useState([]);
 
   const validateChange = (e) => {
     e.persist();
@@ -88,18 +88,15 @@ const App = () => {
   //axios call for the trucks
 
   useEffect(() => {
-
-    axios.get('https://foodtrucktrackr7.herokuapp.com/trucks/')
-    .then(res => {
-      settrucksList(res.data); 
-    })
-    .catch(err => {
-      console.log(err); 
-    })
-
-
-  }, [])
-
+    axios
+      .get("https://foodtrucktrackr7.herokuapp.com/trucks/")
+      .then((res) => {
+        settrucksList(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="App">
@@ -123,6 +120,9 @@ const App = () => {
         </Route>
         <Route path="/operator-dashboard">
           <TrucksOwned />
+        </Route>
+        <Route path="/addtruckform">
+          <AddTruck />
         </Route>
       </Switch>
     </div>
