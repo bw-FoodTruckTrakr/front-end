@@ -8,39 +8,53 @@ import styled from "styled-components";
 
 ////////styles////////////
 const StyledFormContainer = styled.div`
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+
+  .button-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    border: 2px solid ${(props) => props.theme.button};
+    margin-bottom: 5%;
+  }
 
   img {
     display: block;
     margin: 0 auto;
   }
 
-  .sign-in-btn {
-    padding: 1%;
-    border: 1px solid ${(props) => props.theme.button};
-    border-radius: 5px 0 0 5px;
-    background-color: ${(props) => props.theme.paleYellow};
-    color: ${(props) => props.theme.button};
-    margin-bottom: 3%;
-
+  .sign-in-link {
+    padding: 5%;
+    border-right: 3px solid ${(props) => props.theme.button};
     &:hover {
       background-color: ${(props) => props.theme.button};
+    }
+  }
+
+  .sign-in-btn {
+    background-color: transparent;
+    color: ${(props) => props.theme.button};
+    border: none;
+    &:hover {
       color: white;
     }
   }
 
   .register-btn {
-    padding: 1%;
-    border: 1px solid ${(props) => props.theme.button};
-    border-radius: 0 5px 5px 0;
+    border: none;
     color: white;
     background-color: ${(props) => props.theme.button};
+    padding: 13% 6%;
   }
 
   .member {
     color: ${(props) => props.theme.grey};
     text-decoration: underline;
-    margin: 3% 0;
+    margin: 15% 0;
   }
 `;
 
@@ -116,12 +130,12 @@ export default function SignUp() {
   return (
     <StyledFormContainer>
       <img src={img} />
-      <Link to="/">
-        <button class="sign-in-btn">Sign In</button>
-      </Link>
-      <Link to="#">
+      <div className="button-links">
+        <Link to="/" className="sign-in-link">
+          <button class="sign-in-btn">Sign In</button>
+        </Link>
         <button class="register-btn">Register</button>
-      </Link>
+      </div>
       <SignUpForm
         values={formValues}
         change={handleChange}

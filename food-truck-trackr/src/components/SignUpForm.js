@@ -10,10 +10,10 @@ const StyledForm = styled.form`
   input[type="password"],
   input[type="email"] {
     display: block;
-    margin: 4%;
+    margin: 7% 0;
     border: none;
     background-color: ${(props) => props.theme.paleYellow};
-    padding: 6%;
+    padding: 6% 0;
     border-bottom: 2px solid ${(props) => props.theme.grey};
   }
 
@@ -36,21 +36,26 @@ const StyledForm = styled.form`
   }
 
   .submit:disabled {
-    padding: 0.5% 4%;
-    background-color: ${(props) => props.theme.grey};
-    color: white;
+    margin-top: 6%;
+    padding: 5% 14%;
+    border: 2px solid ${(props) => props.theme.grey};
+    background-color: white;
+    color: ${(props) => props.theme.grey};
+    font-size: 2rem;
   }
 
   .submit {
-    padding: 0.5% 4%;
+    margin-top: 6%;
+    padding: 5% 14%;
     background-color: ${(props) => props.theme.button};
-    color: ${(props) => props.theme.grey};
+    color: white;
     border: none;
+    font-size: 2rem;
   }
 
   .errors {
     color: red;
-    margin-bottom: 1%;
+    margin-bottom: 4%;
   }
 `;
 

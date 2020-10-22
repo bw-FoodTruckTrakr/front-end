@@ -6,31 +6,39 @@ const StyledTruckForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
 
   h2 {
     font-size: 3rem;
-    margin: 3%;
+    margin: 3% 0;
   }
 
   label {
     margin-bottom: 1%;
+    text-transform: uppercase;
   }
 
   input {
     display: block;
-    margin: 4%;
+    margin: 4% 0;
     border: none;
     background-color: ${(props) => props.theme.paleYellow};
-    padding: 6%;
+    padding: 6% 0;
     border-bottom: 2px solid ${(props) => props.theme.grey};
   }
 
   button {
-    padding: 0.5% 4%;
+    padding: 1% 4%;
     background-color: ${(props) => props.theme.button};
-    color: ${(props) => props.theme.grey};
+    color: white;
     border: none;
     margin: 2%;
+  }
+
+  .submit:disabled {
+    color: ${(props) => props.theme.grey};
+    border: 2px solid ${(props) => props.theme.grey};
+    background-color: white;
   }
 
   img {
@@ -52,6 +60,7 @@ export default function AddTruckForm(props) {
     ratingsClick,
     customerRatings,
     average,
+    disabled,
   } = props;
 
   return (
@@ -80,7 +89,7 @@ export default function AddTruckForm(props) {
       </label>
       {values.truckImage ? <img src={values.truckImage} /> : null}
       <label>
-        Truck Departure Time
+        Departure Time
         <input
           type="text"
           name="departure"
@@ -118,7 +127,9 @@ export default function AddTruckForm(props) {
         return <li key={idx}>{rating}</li>;
       })}
       <p>Average Rating: {average}</p>
-      <button type="submit">Submit</button>
+      <button type="submit" disabled={disabled} className="submit">
+        Submit
+      </button>
     </StyledTruckForm>
   );
 }
