@@ -9,7 +9,7 @@ const initialFormValues = {
   truckImage: "",
   departure: "",
   cuisine: "",
-  ratings: "",
+  ratings: [],
 };
 
 const initialFormErrors = {
@@ -24,6 +24,7 @@ export default function AddTruck() {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [customerRatings, setCustomerRatings] = useState([]);
   const [average, setAverage] = useState(0);
+  const [disabled, setDisabled] = useState(true);
 
   ////////////event handlers////////////
   const handleChange = (e) => {
@@ -80,6 +81,12 @@ export default function AddTruck() {
     }
   }, [customerRatings]);
 
+  useEffect(() => {
+    schema.isValid(formValues).then((valid) => {
+      setDisabled(!valid);
+    });
+  }, [formValues]);
+
   return (
     <AddTruckForm
       values={formValues}
@@ -89,6 +96,7 @@ export default function AddTruck() {
       ratingsClick={handleRatingsClick}
       customerRatings={customerRatings}
       average={average}
+      disabled={disabled}
     />
   );
 }

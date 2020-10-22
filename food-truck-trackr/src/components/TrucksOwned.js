@@ -3,8 +3,17 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledButtons = styled.div`
-  display: flex;
-  justify-content: center;
+  width: 100%;
+
+  h1 {
+    width: 100%;
+    background-color: ${(props) => props.theme.button};
+    font-size: 5rem;
+    color: white;
+    margin: 0;
+    text-align: center;
+    padding: 4%;
+  }
 
   button {
     background-color: ${(props) => props.theme.button};
@@ -13,6 +22,11 @@ const StyledButtons = styled.div`
     margin: 1%;
     padding: 15%;
     cursor: pointer;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
   }
 
   a {
@@ -39,7 +53,8 @@ export default function TrucksOwned() {
   // }, [])
 
   return (
-    <StyledButtons className="buttons">
+    <StyledButtons className="dash">
+      <h1>Operator Dashboard</h1>
       {/* Would map over trucks array and feed this info as props into a styled card component that would render each truck's information*/}
 
       {/* trucks.map(truck => {
@@ -52,16 +67,17 @@ export default function TrucksOwned() {
           <p>Average rating: {truck.average}</p>
           )
       }) */}
-
-      <Link to="/addtruckform">
-        <button className="button">Add Truck</button>
-      </Link>
-      <Link to="/addtruckform">
-        <button className="button">Edit Truck</button>
-      </Link>
-      <a href="#">
-        <button>Delete Truck</button>
-      </a>
+      <div className="buttons">
+        <Link to="/addtruckform">
+          <button>Add Truck</button>
+        </Link>
+        <Link to="/addtruckform">
+          <button>Edit Truck</button>
+        </Link>
+        <a href="#">
+          <button>Delete Truck</button>
+        </a>
+      </div>
     </StyledButtons>
   );
 }
